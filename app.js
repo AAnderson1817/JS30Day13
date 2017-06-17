@@ -1,5 +1,5 @@
-//So that our checkSlide function doesn't trigger like crazy, we use debounce to limit the number of times a call can be made over a certain timeframe. Currently, any function wrapped in debounce can only fire once every 20 ms, as defined by the 'wait' argument.
-function debounce(func, wait = 20, immediate = true) {
+//So that our checkSlide function doesn't trigger like crazy, we use debounce to limit the number of times a call can be made over a certain timeframe. Currently, any function wrapped in debounce can only fire once every 20 ms, as defined by the 'wait' argument. I've since reduced the wait time to 5ms in order to smooth the transition.
+function debounce(func, wait = 5, immediate = true) {
   var timeout;
   return function() {
     var context = this, args = arguments;
@@ -19,7 +19,7 @@ const sliderImages = document.querySelectorAll('.slide-in')
 function checkSlide(e){
   sliderImages.forEach(sliderImage => {
     //Halfway through the image
-    const slideInAt =(window.scrollY + window.innerHeight) - sliderImage.height / 2;
+    const slideInAt =(window.scrollY + window.innerHeight) - sliderImage.height / 10;
     //Bottom of the image
     const imageBottom = sliderImage.offsetTop + sliderImage.height;
     const isHalfShown = slideInAt > sliderImage.offsetTop;
